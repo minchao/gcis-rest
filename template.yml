@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: GCIS REST API wrapper.
+
+Globals:
+
+  Function:
+    Timeout: 6
+
+Resources:
+
+  CompanyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: build/
+      Handler: handler
+      Runtime: go1.x
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /company
+            Method: GET
+
+Outputs:
+
+  GcisRestApi:
+    Description: "API Gateway endpoint URL for Prod environment for GCIS REST API"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
