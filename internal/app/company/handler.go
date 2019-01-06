@@ -22,7 +22,7 @@ var (
 func Handler(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	if chiAdapter == nil {
 		r := chi.NewRouter()
-		r.Get("/company/{id:[0-9]+}", getCompany)
+		r.Get("/companies/{id:[0-9]+}", getCompany)
 
 		chiAdapter = chiadapter.New(r)
 	}

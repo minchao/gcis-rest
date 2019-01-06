@@ -29,7 +29,7 @@ Resources:
         CatchAll:
           Type: Api
           Properties:
-            Path: /company/{proxy+}
+            Path: /companies/{proxy+}
             Method: any
       Environment:
         Variables:
