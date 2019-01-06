@@ -1,2 +1,10 @@
 github.com/aws/aws-lambda-go v1.8.1 h1:nHBpP6XC30bwF6qWKrw/BrK2A8i4GKmSZzajTBIJS4A=
 github.com/aws/aws-lambda-go v1.8.1/go.mod h1:zUsUQhAUjYzR8AuduJPCfhBuKWUaDbQiPOG+ouzmE1A=
+github.com/awslabs/aws-lambda-go-api-proxy v0.2.0 h1:rlPO5+qdErTggV9EVXU3x+mZkX7zWwG9xL6tmX+1c+8=
+github.com/awslabs/aws-lambda-go-api-proxy v0.2.0/go.mod h1:1WYCl0lFZD+KAqdW+usdz46oShDhOEj3uTw09Qv++28=
+github.com/go-chi/chi v3.3.3+incompatible h1:KHkmBEMNkwKuK4FdQL7N2wOeB9jnIx7jR5wsuSBEFI8=
+github.com/go-chi/chi v3.3.3+incompatible/go.mod h1:eB3wogJHnLi3x/kFX2A+IbTBlXxmMeXJVKy9tTv1XzQ=
+github.com/go-chi/render v1.0.1 h1:4/5tis2cKaNdnv9zFLfXzcquC9HbeZgCnxGnKrltBS8=
+github.com/go-chi/render v1.0.1/go.mod h1:pq4Rr7HbnsdaeHagklXub+p6Wd16Af5l9koip1OvJns=
+github.com/minchao/go-gcis v0.0.0-20181216042317-3dc7b0995a78 h1:rLazSgEatU2/3bk88lqGyFJf7RKHa4aWQsgVn/FGVik=
+github.com/minchao/go-gcis v0.0.0-20181216042317-3dc7b0995a78/go.mod h1:CXhWoJjpHZS4C6YzoymEKUrC2eGEuDIBxWhL/ZvRpbI=

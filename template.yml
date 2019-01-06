@@ -2,6 +2,16 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: GCIS REST API wrapper.
 
+Parameters:
+
+  ParamGCISBaseURL:
+    Type: String
+    Default: ""
+    AllowedValues:
+      - ""
+      - "http://data.gcis.nat.gov.tw/"
+      - "https://data.gcis.nat.gov.tw/"
+
 Globals:
 
   Function:
@@ -13,17 +23,22 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: build/
-      Handler: handler
+      Handler: company
       Runtime: go1.x
       Events:
         CatchAll:
           Type: Api
           Properties:
-            Path: /company
-            Method: GET
+            Path: /company/{proxy+}
+            Method: any
+      Environment:
+        Variables:
+          GCIS_BASE_URL: !Ref ParamGCISBaseURL
 
 Outputs:
 
   GcisRestApi:
     Description: "API Gateway endpoint URL for Prod environment for GCIS REST API"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+    Export:
+        Name: GcisRestApi

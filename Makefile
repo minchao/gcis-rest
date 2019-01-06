@@ -19,10 +19,10 @@ deps: ## Install dependencies
 	go mod download
 
 lint: ## Run all go linters
-	golangci-lint run -E gofmt ./cmd
+	golangci-lint run -E gofmt ./cmd/... ./internal/...
 
 build: ## Build the lambda binary
-	GOOS=$(GOOS) go build -ldflags="-s -w" -o ./build/handler cmd/main.go
+	GOOS=$(GOOS) go build -ldflags="-s -w" -o ./build/company cmd/company/main.go
 
 clean: ## Clean all artifacts
 	rm -rf ./build
