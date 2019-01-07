@@ -15,7 +15,7 @@ Parameters:
 Globals:
 
   Function:
-    Timeout: 6
+    Timeout: 10
 
 Resources:
 
@@ -29,7 +29,7 @@ Resources:
         CatchAll:
           Type: Api
           Properties:
-            Path: /companies/{proxy+}
+            Path: /{proxy+}
             Method: any
       Environment:
         Variables:
