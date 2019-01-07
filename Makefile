@@ -5,6 +5,8 @@ CFN_BUCKET_NAME ?= $(PROJECT_NAME)-bucket
 CFN_TEMPLATE := ./template.yml
 CFN_PACKAGED_TEMPLATE := ./build/packaged.yml
 CFN_BUILD_DIR := $(shell dirname $(CFN_PACKAGED_TEMPLATE))
+CFN_PARAMETER_FILE ?=
+CFN_PARAMETER_OVERRIDES := $(if $(CFN_PARAMETER_FILE:""=),--parameter-overrides $(shell jq -j '.[] | "\"" + .ParameterKey + "=" + .ParameterValue +"\" "' $(CFN_PARAMETER_FILE)),)
 GOOS := linux
 
 help:
@@ -37,4 +39,5 @@ deploy:package ## Deploy packaged SAM template
 	sam deploy \
 		--template-file $(CFN_PACKAGED_TEMPLATE) \
 		--stack-name $(PROJECT_NAME) \
-		--capabilities CAPABILITY_IAM
+		--capabilities CAPABILITY_IAM \
+		$(CFN_PARAMETER_OVERRIDES)
