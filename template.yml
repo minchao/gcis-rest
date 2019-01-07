@@ -15,25 +15,31 @@ Parameters:
 Globals:
 
   Function:
-    Timeout: 6
+    Runtime: go1.x
+    MemorySize: 128
+    Timeout: 10
+    Environment:
+      Variables:
+        GCIS_BASE_URL: !Ref ParamGCISBaseURL
 
 Resources:
 
-  CompanyFunction:
+  CompaniesFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: build/
       Handler: company
-      Runtime: go1.x
       Events:
-        CatchAll:
+        ProxyCompanies:
           Type: Api
           Properties:
-            Path: /companies/{proxy+}
-            Method: any
-      Environment:
-        Variables:
-          GCIS_BASE_URL: !Ref ParamGCISBaseURL
+            Path: /companies
+            Method: GET
+        ProxyCompaniesGreedy:
+          Type: Api
+          Properties:
+            Path: /companies/{id}
+            Method: GET
 
 Outputs:
 
@@ -41,4 +47,4 @@ Outputs:
     Description: "API Gateway endpoint URL for Prod environment for GCIS REST API"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
     Export:
-        Name: GcisRestApi
+      Name: GcisRestApi
