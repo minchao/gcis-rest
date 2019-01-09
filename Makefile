@@ -1,4 +1,4 @@
-.PHONY: install deps lint build clean package deploy
+.PHONY: help install deps lint build clean package deploy
 
 PROJECT_NAME ?= gcis-rest
 CFN_BUCKET_NAME ?= $(PROJECT_NAME)-bucket
